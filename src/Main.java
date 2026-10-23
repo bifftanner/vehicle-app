@@ -24,7 +24,7 @@ void main() {
     System.out.println("Printing RideStreetLegal Function");
     System.out.println("----------------------");
 
-    for (StreetLegal m : streetLegal) {
-        System.out.println(m.RideStreetLegal());
+    for (StreetLegal s : streetLegal) {
+        System.out.println(s.RideStreetLegal());
     }
 }
