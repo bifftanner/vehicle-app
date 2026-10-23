@@ -1,4 +1,4 @@
-public class Sportbike extends Motorcycle {
+public class Sportbike extends Motorcycle implements StreetLegal {
     private int maxLeanAngle;
     private int tractionControlLevel;
     private String licensePlate;
@@ -12,6 +12,11 @@ public class Sportbike extends Motorcycle {
 
     @Override
     public String Ride() {
-        return getMake() + " " + getModel() + " riding track at high speed with " + maxLeanAngle + " degree lean angle and " + tractionControlLevel + " traction control level.";
+        return getMake() + " " + getModel() + " is riding track at high speed with " + maxLeanAngle + " degree lean angle and " + tractionControlLevel + " traction control level.";
+    }
+
+    @Override
+    public String RideStreetLegal() {
+        return getMake() + " " + getModel() + " is riding on the highway street legally at high speed with " + maxLeanAngle + " degree lean angle and " + tractionControlLevel + " traction control level.";
     }
 }

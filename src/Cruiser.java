@@ -1,4 +1,4 @@
-public class Cruiser extends Motorcycle {
+public class Cruiser extends Motorcycle implements StreetLegal {
     private int saddlebagCapacity;
     private boolean hasPassengerBackrest;
     private String licensePlate;
@@ -12,6 +12,11 @@ public class Cruiser extends Motorcycle {
 
     @Override
     public String Ride() {
-        return getMake() + " " + getModel() + " is riding street at medium speed carrying " + saddlebagCapacity + " lbs of saddlebag capacity.";
+        return getMake() + " " + getModel() + " is riding track at medium speed carrying " + saddlebagCapacity + " lbs of saddlebag capacity.";
+    }
+
+    @Override
+    public String RideStreetLegal() {
+        return getMake() + " " + getModel() + " is riding street legally at medium speed carrying " + saddlebagCapacity + " lbs of saddlebag capacity.";
     }
 }

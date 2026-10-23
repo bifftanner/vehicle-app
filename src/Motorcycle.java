@@ -18,6 +18,7 @@ public abstract class Motorcycle {
     public String getMake() {
         return make;
     }
+
     public String getModel() {
         return model;
     }
