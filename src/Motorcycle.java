@@ -7,6 +7,8 @@ public abstract class Motorcycle {
 
     public abstract String Ride();
 
+    public abstract String toCSV();
+
     public Motorcycle(String make, String model, int topSpeed, int engineDisplacement, int passengerCapacity) {
         this.make = make;
         this.model = model;
@@ -22,4 +24,10 @@ public abstract class Motorcycle {
     public String getModel() {
         return model;
     }
+
+    public int getTopSpeed() {return topSpeed;}
+
+    public int getEngineDisplacement() {return engineDisplacement;}
+
+    public int getPassengerCapacity() {return passengerCapacity;}
 }

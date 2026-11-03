@@ -16,6 +16,11 @@ public class Sportbike extends Motorcycle implements StreetLegal {
     }
 
     @Override
+    public String toCSV() {
+        return "Sportbike," + getMake() + "," + getModel() + "," + getTopSpeed() + "," + getEngineDisplacement() + "," + getPassengerCapacity() + "," + maxLeanAngle + "," + tractionControlLevel+ "," + licensePlate;
+    }
+
+    @Override
     public String RideStreetLegal() {
         return getMake() + " " + getModel() + " is riding on the highway street legally at high speed with " + maxLeanAngle + " degree lean angle and " + tractionControlLevel + " traction control level.";
     }

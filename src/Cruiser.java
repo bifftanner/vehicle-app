@@ -16,6 +16,11 @@ public class Cruiser extends Motorcycle implements StreetLegal {
     }
 
     @Override
+    public String toCSV() {
+        return "Cruiser," + getMake() + "," + getModel() + "," + getTopSpeed() + "," + getEngineDisplacement() + "," + getPassengerCapacity() + "," + saddlebagCapacity + "," + hasPassengerBackrest + "," + licensePlate;
+    }
+
+    @Override
     public String RideStreetLegal() {
         return getMake() + " " + getModel() + " is riding street legally at medium speed carrying " + saddlebagCapacity + " lbs of saddlebag capacity.";
     }

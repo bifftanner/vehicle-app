@@ -1,0 +1,3 @@
+Dirtbike,Yamaha,yz250,90,250,1,two stroke,12
+Sportbike,Suzuki,GSXR,190,1000,2,55,10,r91jn6
+Cruiser,Harley Davidson,Dyna,115,1340,2,15,false,a5l986

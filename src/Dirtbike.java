@@ -12,4 +12,9 @@ public class Dirtbike extends Motorcycle {
     public String Ride() {
         return getMake() + " " +  getModel() + " hit a jump with " + suspensionTravel + " inch suspension travel";
     }
+
+    @Override
+    public String toCSV() {
+        return "Dirtbike," + getMake() + "," + getModel() + "," + getTopSpeed() + "," + getEngineDisplacement() + "," + getPassengerCapacity() + "," + engineType + "," + suspensionTravel;
+    }
 }
