@@ -1,7 +1,6 @@
 import java.io.FileWriter;
-import java.io.IOException;
 
-void main() throws IOException {
+void main() {
     ArrayList<Motorcycle> motorcycles = new ArrayList<>();
     ArrayList<StreetLegal> streetLegal = new ArrayList<>();
 
@@ -34,9 +33,13 @@ void main() throws IOException {
     System.out.println("----------------------");
     System.out.println("Save file will be saved here: " + System.getProperty("user.dir"));
 
-    FileWriter fw = new FileWriter("save.txt");
-    for (Motorcycle m : motorcycles) {
-        fw.write(m.toCSV() + "\n");
+    try {
+        FileWriter fw = new FileWriter("save.txt");
+        for (Motorcycle m : motorcycles) {
+            fw.write(m.toCSV() + "\n");
+        }
+        fw.close();
+    } catch (Exception e) {
+        throw new RuntimeException(e);
     }
-    fw.close();
 }
