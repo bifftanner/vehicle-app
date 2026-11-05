@@ -1,96 +1,103 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
-
-ArrayList<Motorcycle> motorcycles = new ArrayList<>();
-ArrayList<StreetLegal> streetLegal = new ArrayList<>();
-
-void main() {
+import java.util.ArrayList;
+import java.util.Scanner;
 
 
-    Dirtbike yamaha = new Dirtbike("Kawasaki", "kx450", 90, 450, 1, "four stroke", 14);
-    Cruiser harley = new Cruiser("Harley Davidson", "Nightster", 115, 975, 2, 0, false, "7fn127");
-    Sportbike gixxer = new Sportbike("Yamaha", "R1", 190, 1000, 2, 60, 5, "f9a2fg");
+public class Main {
+    public static ArrayList<Motorcycle> motorcycles = new ArrayList<>();
+    public static ArrayList<StreetLegal> streetLegal = new ArrayList<>();
 
-    motorcycles.add(yamaha);
-    motorcycles.add(gixxer);
-    motorcycles.add(harley);
+    public static void main(String[] args) {
 
-    streetLegal.add(gixxer);
-    streetLegal.add(harley);
+        Dirtbike yamaha = new Dirtbike("Kawasaki", "kx450", 90, 450, 1, "four stroke", 14);
+        Cruiser harley = new Cruiser("Harley Davidson", "Nightster", 115, 975, 2, 0, false, "7fn127");
+        Sportbike gixxer = new Sportbike("Yamaha", "R1", 190, 1000, 2, 60, 5, "f9a2fg");
 
-    System.out.println("Printing Ride Function");
-    System.out.println("----------------------");
+        motorcycles.add(yamaha);
+        motorcycles.add(gixxer);
+        motorcycles.add(harley);
 
-    for (Motorcycle m : motorcycles) {
-        System.out.println(m.Ride());
-    }
+        streetLegal.add(gixxer);
+        streetLegal.add(harley);
 
+        System.out.println("Printing Ride Function");
+        System.out.println("----------------------");
 
-    System.out.println("Printing RideStreetLegal Function");
-    System.out.println("----------------------");
-
-    for (StreetLegal s : streetLegal) {
-        System.out.println(s.RideStreetLegal());
-    }
-
-    System.out.println("----------------------");
-    System.out.println("Save file will be saved here: " + System.getProperty("user.dir"));
-
-    try {
-        FileWriter fw = new FileWriter("save.txt");
         for (Motorcycle m : motorcycles) {
-            fw.write(m.toCSV() + "\n");
+            System.out.println(m.Ride());
         }
-        fw.close();
-    } catch (Exception e) {
-        throw new RuntimeException(e);
-    }
 
-    ReadFile();
-    System.out.println("----------------------");
-    System.out.println("Read SaveFile and created new objects");
-    System.out.println("(Will Print Duplicate Objects)");
-    System.out.println("----------------------");
-    for (Motorcycle m : motorcycles) {
-        System.out.println(m.Ride());
-    }
-}
 
-void ReadFile() {
-    try {
-        Scanner fileScanner = new Scanner(new File("save.txt"));
-        while (fileScanner.hasNextLine()) {
-            String line = fileScanner.nextLine();
+        System.out.println("Printing RideStreetLegal Function");
+        System.out.println("----------------------");
 
-            String[] split = line.split(",");
+        for (StreetLegal s : streetLegal) {
+            System.out.println(s.RideStreetLegal());
+        }
 
-            String type = split[0];
-            String make = split[1];
-            String model = split[2];
-            int topSpeed = Integer.parseInt(split[3]);
-            int engineDisplacement = Integer.parseInt(split[4]);
-            int passengerCapacity = Integer.parseInt(split[5]);
+        System.out.println("----------------------");
+        System.out.println("Save file will be saved here: " + System.getProperty("user.dir"));
 
-            if (type.equals("Dirtbike")) {
-                String engineType = split[6];
-                int suspensionTravel = Integer.parseInt(split[7]);
-
-                motorcycles.add(new Dirtbike(make, model, topSpeed, engineDisplacement,passengerCapacity, engineType, suspensionTravel));
-            } else if (type.equals("Sportbike")) {
-                int maxLeanAngle =  Integer.parseInt(split[6]);
-                int tractionControlLevel = Integer.parseInt(split[7]);
-                String licensePlate = split[8];
-
-                motorcycles.add(new Sportbike(make, model, topSpeed, engineDisplacement, passengerCapacity, maxLeanAngle, tractionControlLevel, licensePlate));
-            } else if (type.equals("Cruiser")) {
-                int saddlebagCapactity = Integer.parseInt(split[6]);
-                boolean hasPassengerBackrest =  Boolean.parseBoolean(split[7]);
-                String licensePlate =  split[8];
-
-                motorcycles.add(new Cruiser(make, model, topSpeed, engineDisplacement, passengerCapacity, saddlebagCapactity, hasPassengerBackrest, licensePlate));
+        try {
+            FileWriter fw = new FileWriter("save.txt");
+            for (Motorcycle m : motorcycles) {
+                fw.write(m.toCSV() + "\n");
             }
+            fw.close();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
-        fileScanner.close();
-    } catch (FileNotFoundException e) {
-        throw new RuntimeException(e);
+
+        ReadFile();
+        System.out.println("----------------------");
+        System.out.println("Read SaveFile and created new objects");
+        System.out.println("(Will Print Duplicate Objects)");
+        System.out.println("----------------------");
+        for (Motorcycle m : motorcycles) {
+            System.out.println(m.Ride());
+        }
+    }
+
+
+    public static void ReadFile() {
+        try {
+            Scanner fileScanner = new Scanner(new File("save.txt"));
+            while (fileScanner.hasNextLine()) {
+                String line = fileScanner.nextLine();
+
+                String[] split = line.split(",");
+
+                String type = split[0];
+                String make = split[1];
+                String model = split[2];
+                int topSpeed = Integer.parseInt(split[3]);
+                int engineDisplacement = Integer.parseInt(split[4]);
+                int passengerCapacity = Integer.parseInt(split[5]);
+
+                if (type.equals("Dirtbike")) {
+                    String engineType = split[6];
+                    int suspensionTravel = Integer.parseInt(split[7]);
+
+                    motorcycles.add(new Dirtbike(make, model, topSpeed, engineDisplacement,passengerCapacity, engineType, suspensionTravel));
+                } else if (type.equals("Sportbike")) {
+                    int maxLeanAngle =  Integer.parseInt(split[6]);
+                    int tractionControlLevel = Integer.parseInt(split[7]);
+                    String licensePlate = split[8];
+
+                    motorcycles.add(new Sportbike(make, model, topSpeed, engineDisplacement, passengerCapacity, maxLeanAngle, tractionControlLevel, licensePlate));
+                } else if (type.equals("Cruiser")) {
+                    int saddlebagCapactity = Integer.parseInt(split[6]);
+                    boolean hasPassengerBackrest =  Boolean.parseBoolean(split[7]);
+                    String licensePlate =  split[8];
+
+                    motorcycles.add(new Cruiser(make, model, topSpeed, engineDisplacement, passengerCapacity, saddlebagCapactity, hasPassengerBackrest, licensePlate));
+                }
+            }
+            fileScanner.close();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
